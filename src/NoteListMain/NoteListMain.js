@@ -12,7 +12,11 @@ export default class NoteListMain extends Component {
   render() {
     const { notes } = this.context;
     const currentFolderId = this.props.match.params.folderId;
-    const notesFiltered = notes.filter(item => item.folderId === currentFolderId);
+    let notAtTopLevel = Object.keys(this.props.match.params).length > 0;
+    
+    const notesFiltered = (notAtTopLevel) ? notes.filter(item => item.folderId === currentFolderId) : notes;
+    
+
 
     return (
       <section className='NoteListMain'>

@@ -20,6 +20,11 @@ class App extends Component {
       {...values}
     )
   }
+
+  addFolder = (folderName, folderId) => {
+     const newFolderId = Math.floor(Math.random()*100000000)
+  }
+
   deleteNote = noteID => {
     const newNotes = this.state.notes.filter(n =>
       n.id !== noteID
@@ -153,6 +158,7 @@ class App extends Component {
         notes: this.state.notes,
         folders: this.state.folders,
         deleteNote: this.deleteNote,
+        addFolder: this.addFolder
       }
       return (
         <NotesFoldersContext.Provider value={contextValue}>
