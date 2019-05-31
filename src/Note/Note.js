@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PropTypes from 'prop-types';
 import NotesFoldersContext from '../NotesFoldersContext'
 import './Note.css'
 
@@ -24,7 +25,7 @@ function deleteNoteRequest(noteId, noteDeleteCallbackFunc) {
       // this is where the App component can remove it from state
       noteDeleteCallbackFunc(noteId);
       // * In our case noteDeleteCallbackFunc is context.deleteNote; We
-      //   specified this below, on line 52. Function context.deleteNote
+      //   specified this below, on line 56. Function context.deleteNote
       //   is defined in App.js. It removes the note from App's state.
     })
     .catch(error => {
@@ -74,3 +75,7 @@ export default class Note extends Component {
     )
   }
 }
+
+Note.propTypes = {
+  onDeleteNote: PropTypes.func,
+};

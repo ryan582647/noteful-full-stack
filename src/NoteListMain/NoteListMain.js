@@ -9,10 +9,6 @@ import './NoteListMain.css'
 
 export default class NoteListMain extends Component {
   static contextType = NotesFoldersContext;
-  jumpBack() {
-    console.log('jumping back 2')
-    this.props.history.push("/");
-  }
   render() {
     const { notes } = this.context;
     const currentFolderId = this.props.match.params.folderId;
