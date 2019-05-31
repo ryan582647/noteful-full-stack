@@ -21,8 +21,14 @@ class App extends Component {
     )
   }
 
-  addFolder = (folderName, folderId) => {
-     const newFolderId = Math.floor(Math.random()*100000000)
+  addFolder = (folder) => {
+    let newFolderState = [...this.state.folders, folder];
+    this.setState({folders: newFolderState});
+  }
+
+  addNote = (note) => {
+    let newNoteState = [...this.state.notes, note];
+    this.setState({notes: newNoteState});
   }
 
   deleteNote = noteID => {
@@ -56,36 +62,17 @@ class App extends Component {
   }
 
     renderNavRoutes() {
-      // const { notes, folders } = this.state
       return (
         <>
           {['/', '/folder/:folderId'].map(path =>
             <Route exact path={path}
               key={path}
               component={NoteListNav}
-            // render={routeProps =>
-            //   <NoteListNav
-            //     folders={folders}
-            //     notes={notes}
-            //     {...routeProps}
-            //   />
-            // }
             />
           )}
           <Route
             path='/note/:noteId'
             component={NotePageNav}
-          // render={routeProps => {
-          //   const { noteId } = routeProps.match.params
-          //   const note = findNote(notes, noteId) || {}
-          //   const folder = findFolder(folders, note.folderId)
-          //   return (
-          //     <NotePageNav
-          //       {...routeProps}
-          //       folder={folder}
-          //     />
-          //   )
-          // }}
           />
           <Route
             path='/add-folder'
@@ -100,38 +87,17 @@ class App extends Component {
     }
 
     renderMainRoutes() {
-      // const { notes, folders } = this.state
       return (
         <>
           {['/', '/folder/:folderId'].map(path =>
             <Route exact path={path}
               key={path}
               component={NoteListMain}
-            // render={routeProps => {
-            //   const { folderId } = routeProps.match.params
-            //   const notesForFolder = getNotesForFolder(notes, folderId)
-            //   return (
-            //     <NoteListMain
-            //       {...routeProps}
-            //       notes={notesForFolder}
-            //     />
-            //   )
-            // }}
             />
           )}
           <Route
             path='/note/:noteId'
             component={NotePageMain}
-          //  render={routeProps => {
-          //    const { noteId } = routeProps.match.params
-          //    const note = findNote(notes, noteId)
-          //    return (
-          //      <NotePageMain
-          //        {...routeProps}
-          //        note={note}
-          //      />
-          //    )
-          //  }}
           />
           <Route
             path='/add-folder'
@@ -140,14 +106,6 @@ class App extends Component {
           <Route
             path='/add-note'
             component={AddNote}
-          // render={routeProps => {
-          //   return (
-          //     <AddNote
-          //       {...routeProps}
-          //       folders={folders}
-          //     />
-          //   )
-          // }}
           />
         </>
       )
@@ -157,8 +115,9 @@ class App extends Component {
       const contextValue = {
         notes: this.state.notes,
         folders: this.state.folders,
+        addNote: this.addNote,
         deleteNote: this.deleteNote,
-        addFolder: this.addFolder
+        addFolder: this.addFolder,
       }
       return (
         <NotesFoldersContext.Provider value={contextValue}>

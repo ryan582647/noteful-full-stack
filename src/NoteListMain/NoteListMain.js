@@ -9,14 +9,16 @@ import './NoteListMain.css'
 
 export default class NoteListMain extends Component {
   static contextType = NotesFoldersContext;
+  jumpBack() {
+    console.log('jumping back 2')
+    this.props.history.push("/");
+  }
   render() {
     const { notes } = this.context;
     const currentFolderId = this.props.match.params.folderId;
-    let notAtTopLevel = Object.keys(this.props.match.params).length > 0;
-    
-    const notesFiltered = (notAtTopLevel) ? notes.filter(item => item.folderId === currentFolderId) : notes;
-    
 
+    let atTopLevel = Object.keys(this.props.match.params).length === 0;
+    const notesFiltered = (atTopLevel) ? notes : notes.filter(item => item.folderId === currentFolderId);
 
     return (
       <section className='NoteListMain'>

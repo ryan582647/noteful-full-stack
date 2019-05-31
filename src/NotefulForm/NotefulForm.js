@@ -4,11 +4,9 @@ import NotesFoldersContext from '../NotesFoldersContext'
 
 
 export default function NotefulForm(props) {
-
-
+ console.log(props);
  function handleSubmit(e, context) {
     e.preventDefault()
-    console.log("I am working!!!!")
     const folder = {
       name: e.target['folder-name'].value
     }
@@ -37,14 +35,14 @@ export default function NotefulForm(props) {
   const { className, ...otherProps } = props
   return (
     <NotesFoldersContext.Consumer>
-    {(context) => (
-    <form
-      className={['Noteful-form', className].join(' ')}
-      action='#'
-      {...otherProps}
-      onSubmit={e => handleSubmit(e, context)}
-    />
-    )}
-  </NotesFoldersContext.Consumer>
+      {(context) => (
+      <form
+        className={['Noteful-form', className].join(' ')}
+        action='#'
+        {...otherProps}
+        onSubmit={e => handleSubmit(e, context)}
+      />
+      )}
+    </NotesFoldersContext.Consumer>
   )
 }
