@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import Note from '../Note/Note'
-import NotesFoldersContext from '../NotesFoldersContext'
+import React, { Component } from 'react';
+import Note from '../Note/Note';
+import NotesFoldersContext from '../NotesFoldersContext';
 import './NotePageMain.css'
+import MainContentError from '../MainContentError/MainContentError';
 
 export default class NotePageMain extends Component {
   static defaultProps = {
@@ -27,11 +28,14 @@ export default class NotePageMain extends Component {
           modified={note.modified}
           onDeleteNote={this.handleDeleteNote}
           />
-        <div className='NotePageMain__content'>
-          {note.content.split(/\n \r|\n/).map((para, i) =>
-            <p key={i}>{para}</p>
-          )}
-        </div>
+
+        <MainContentError>
+          <div className='NotePageMain__content'>
+            {note.content.split(/\n \r|\n/).map((para, i) =>
+              <p key={i}>{para}</p>
+            )}
+          </div>
+        </MainContentError>
       </section>
     )
   }
