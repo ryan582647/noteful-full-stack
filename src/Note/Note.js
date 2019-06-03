@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types';
 import NotesFoldersContext from '../NotesFoldersContext'
 import './Note.css'
+// Un-comment the 2 imports below and un-comment lines 75-79 to see
+// an example of Error Boundaries in action
+//import GarbageComponent from '../GarbageComponent/GarbageComponent';
+//import NoteErrorBoundary from '../ErrorBoundaries/NoteErrorBoundary';
+
 
 function deleteNoteRequest(noteId, noteDeleteCallbackFunc) {
   fetch(`http://localhost:9090/notes/${noteId}`, {
@@ -67,6 +72,11 @@ export default class Note extends Component {
                 <span className='Date'>
                   {format(this.props.modified, 'Do MMM YYYY')}
                 </span>
+                {/* Un-comment NoteErrorBoundary to see an example of 
+                Error Boundaries in action.
+                <NoteErrorBoundary>
+                  <GarbageComponent value={99} locale="de-DE" currency="US"/>
+                </NoteErrorBoundary> */}
               </div>
             </div>
           </div>
@@ -78,4 +88,7 @@ export default class Note extends Component {
 
 Note.propTypes = {
   onDeleteNote: PropTypes.func,
+  id: PropTypes.string,
+  modified: PropTypes.string,
+  name: PropTypes.string
 };

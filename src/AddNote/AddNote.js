@@ -131,41 +131,41 @@ export default class AddNote extends Component {
     return (
       <section className='AddNote'>
         <h2>Create a note</h2>
-        <NotefulForm onSubmit={this.handleSubmit}>
-          <div className='field'>
-            <label htmlFor='note-name-input'>
-              Name
-            </label>
-            <input type='text' id='note-name-input' name='note-name' onChange={e => this.updateNoteName(e.target.value)} />
-            <ValidationError hasError={!this.state.noteNameValid} message={this.state.validationMessages.noteTitle}/>
-          </div>
-          <div className='field'>
-            <label htmlFor='note-content-input'>
-              Content
-            </label>
-            <textarea id='note-content-input' name='note-content' onChange={e => this.updateNoteContent(e.target.value)} />
-            <ValidationError hasError={!this.state.noteContentValid} message={this.state.validationMessages.noteContent}/>  
-          </div>
-          <div className='field'>
-            <label htmlFor='note-folder-select'>
-              Folder
-            </label>
-            <select id='note-folder-select' name='note-folder-id' onChange={e => this.updateNoteFolder(e.target.value)}>
-              <option value="empty">...</option>
-              {folders.map(folder =>
-                <option key={folder.id} value={folder.id}>
-                  {folder.name}
-                </option>
-              )}
-            </select>
-            <ValidationError hasError={!this.state.noteFolderValid} message={this.state.validationMessages.noteFolder}/>  
-          </div>
-          <div className='buttons'>
-            <button type='submit' disabled={!this.state.formValid}>
-              Add note
-            </button>
-          </div>
-        </NotefulForm>
+          <NotefulForm onSubmit={this.handleSubmit}>
+            <div className='field'>
+              <label htmlFor='note-name-input'>
+                Name
+              </label>
+              <input type='text' id='note-name-input' name='note-name' onChange={e => this.updateNoteName(e.target.value)} />
+              <ValidationError hasError={!this.state.noteNameValid} message={this.state.validationMessages.noteTitle}/>
+            </div>
+            <div className='field'>
+              <label htmlFor='note-content-input'>
+                Content
+              </label>
+              <textarea id='note-content-input' name='note-content' onChange={e => this.updateNoteContent(e.target.value)} />
+              <ValidationError hasError={!this.state.noteContentValid} message={this.state.validationMessages.noteContent}/>  
+            </div>
+            <div className='field'>
+              <label htmlFor='note-folder-select'>
+                Folder
+              </label>
+              <select id='note-folder-select' name='note-folder-id' onChange={e => this.updateNoteFolder(e.target.value)}>
+                <option value="empty">...</option>
+                {folders.map(folder =>
+                  <option key={folder.id} value={folder.id}>
+                    {folder.name}
+                  </option>
+                )}
+              </select>
+              <ValidationError hasError={!this.state.noteFolderValid} message={this.state.validationMessages.noteFolder}/>  
+            </div>
+            <div className='buttons'>
+              <button type='submit' disabled={!this.state.formValid}>
+                Add note
+              </button>
+            </div>
+          </NotefulForm>
       </section>
     )
   }
