@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import './NotefulForm.css'
 
 
@@ -14,3 +15,7 @@ export default class NotefulForm extends Component {
     )
   }
 }
+
+NotefulForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};

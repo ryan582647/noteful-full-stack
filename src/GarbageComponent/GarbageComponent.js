@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 export default class Currency extends Component{
@@ -24,3 +25,9 @@ export default class Currency extends Component{
           )    
         }
 }
+
+Currency.propTypes = {
+  locale: PropTypes.string,
+  currency: PropTypes.string,
+  value: PropTypes.number
+};
