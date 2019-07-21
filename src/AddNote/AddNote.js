@@ -104,7 +104,7 @@ export default class AddNote extends Component {
       folderId: e.target['note-folder-id'].value,
       modified: new Date(),
     }
-    fetch(`http://localhost:9090/notes/`, {
+    fetch(`http://localhost:8000/notes/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
