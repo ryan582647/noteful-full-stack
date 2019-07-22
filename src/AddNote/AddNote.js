@@ -104,7 +104,7 @@ export default class AddNote extends Component {
       folderId: e.target['note-folder-id'].value,
       modified: new Date(),
     }
-    fetch(`http://localhost:8000/notes/`, {
+    fetch(`https://shrouded-falls-76226.herokuapp.com/api/notes`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

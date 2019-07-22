@@ -56,7 +56,7 @@ export default class AddFolder extends Component {
     const folder = {
       name: e.target['folder-name'].value
     }
-    fetch(`http://localhost:8000/folders/`, {
+    fetch(`https://shrouded-falls-76226.herokuapp.com/api/folders`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

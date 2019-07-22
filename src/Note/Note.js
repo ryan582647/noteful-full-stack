@@ -8,9 +8,9 @@ import './Note.css'
 import GarbageComponent from '../GarbageComponent/GarbageComponent';
 import NoteErrorBoundary from '../ErrorBoundaries/NoteErrorBoundary';
 
-
+//below probably has to be changed, will rework when database is active
 function deleteNoteRequest(noteId, noteDeleteCallbackFunc) {
-  fetch(`http://localhost:8000/notes/${noteId}`, {
+  fetch(`https://shrouded-falls-76226.herokuapp.com/notes/${noteId}`, {
     method: 'DELETE',
   })
     .then(res => {
