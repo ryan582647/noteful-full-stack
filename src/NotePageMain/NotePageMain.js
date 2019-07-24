@@ -18,11 +18,12 @@ export default class NotePageMain extends Component {
 
   render() {
     const currentNoteId = this.props.match.params.noteId;
-    const note = this.context.notes.find(item => item.id === currentNoteId)
+    const note = this.context.notes.find(item => item.id.toString() === currentNoteId)
+    console.log(note);
     return (
       <section className='NotePageMain'>
             <Note
-              id={note.id}
+              id={note.id.toString()}
               name={note.note_name}
               modified={note.date_modified}
               onDeleteNote={this.handleDeleteNote}

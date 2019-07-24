@@ -14,7 +14,7 @@ export default class NoteListMain extends Component {
     const currentFolderId = this.props.match.params.folderId;
 
     let atTopLevel = Object.keys(this.props.match.params).length === 0;
-    const notesFiltered = (atTopLevel) ? notes : notes.filter(item => item.folderId === currentFolderId);
+    const notesFiltered = (atTopLevel) ? notes : notes.filter(item => item.folder_id.toString() === currentFolderId);
 
     return (
       <section className='NoteListMain'>
@@ -22,9 +22,9 @@ export default class NoteListMain extends Component {
           {notesFiltered.map(note =>
             <li key={note.id}>
               <Note
-                id={note.id}
-                name={note.name}
-                modified={note.modified}
+                id={note.id.toString()}
+                name={note.note_title}
+                modified={note.date_modified}
               />
             </li>
           )}

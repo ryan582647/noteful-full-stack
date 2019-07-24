@@ -5,24 +5,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types';
 import NotesFoldersContext from '../NotesFoldersContext'
 import './Note.css'
-import GarbageComponent from '../GarbageComponent/GarbageComponent';
+//import GarbageComponent from '../GarbageComponent/GarbageComponent';
 import NoteErrorBoundary from '../ErrorBoundaries/NoteErrorBoundary';
 
 //below probably has to be changed, will rework when database is active
 function deleteNoteRequest(noteId, noteDeleteCallbackFunc) {
   fetch(`https://shrouded-falls-76226.herokuapp.com/notes/${noteId}`, {
     method: 'DELETE',
+    mode: 'cors', // no-cors, cors, *same-origin
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: noteId
+    })
   })
-    .then(res => {
+    /*.then(res => {
       if (!res.ok) {
         return res.json().then(error => {
           throw new Error(error)
         })
       }
-      return res.json()
-    })
+      return res
+    })*/
+    .then(res => res.text())
+    .then(text => console.log(text))
     .then(data => {
-      noteDeleteCallbackFunc(noteId);
+      noteDeleteCallbackFunc(noteId)
     })
     .catch(error => {
       console.error(error)
@@ -63,10 +72,7 @@ export default class Note extends Component {
                 <span className='Date'>
                   {format(this.props.modified, 'Do MMM YYYY')}
                 </span>
-                {
-                <NoteErrorBoundary>
-                  <GarbageComponent value={99} locale="de-DE" currency="US"/>
-                </NoteErrorBoundary> }
+                
               </div>
             </div>
           </div>

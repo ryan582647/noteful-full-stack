@@ -41,10 +41,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let apiRequest1 = fetch('http://localhost:8000/folders').then(function (response) {
+    let apiRequest1 = fetch('https://shrouded-falls-76226.herokuapp.com/api/folders').then(function (response) {
       return response.json()
     });
-    let apiRequest2 = fetch('http://localhost:8000/notes').then(function (response) {
+    let apiRequest2 = fetch('https://shrouded-falls-76226.herokuapp.com/api/notes').then(function (response) {
       return response.json()
     });
 

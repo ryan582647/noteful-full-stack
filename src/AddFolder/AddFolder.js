@@ -54,7 +54,7 @@ export default class AddFolder extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const folder = {
-      name: e.target['folder-name'].value
+      folder_name: e.target['folder-name'].value
     }
     fetch(`https://shrouded-falls-76226.herokuapp.com/api/folders`, {
       method: 'POST',
