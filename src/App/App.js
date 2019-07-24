@@ -33,7 +33,7 @@ class App extends Component {
 
   deleteNote = noteID => {
     const newNotes = this.state.notes.filter(n =>
-      n.id !== noteID
+      n.id.toString() !== noteID
     )
     this.setState({
       notes: newNotes
